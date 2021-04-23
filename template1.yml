@@ -1,0 +1,25 @@
+formatVersion: 1
+inputs: {}
+resources:
+  Cloud_vSphere_Machine_1:
+    type: Cloud.vSphere.Machine
+    properties:
+      image: CENTOS7
+      cpuCount: 2
+      totalMemoryMB: 4096
+      networks:
+        - network: '${resource.Cloud_vSphere_Network_1.id}'
+        - network: '${resource.Cloud_vSphere_Network_2.id}'
+  Cloud_vSphere_Network_1:
+    type: Cloud.vSphere.Network
+    properties:
+      networkType: existing
+      constraints:
+        - tag: Bringup
+  Cloud_vSphere_Network_2:
+    type: Cloud.vSphere.Network
+    properties:
+      networkType: private
+      name: Test_Network
+      constraints:
+        - tag: private
